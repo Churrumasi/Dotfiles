@@ -32,6 +32,22 @@ if confirmar "➕ ¿Quieres agregar el repositorio Chaotic AUR?"; then
     echo "🔄 Sincronizando e iniciando actualización..."
     sudo pacman -Syu
 fi
+# -------------------------------
+# 🛠 Instalar yay
+# -------------------------------
+if confirmar "🛠 ¿Quieres verificar/instalar yay?"; then
+    if ! command -v yay &> /dev/null; then
+        echo "🛠 Instalando yay..."
+        sudo pacman -S --needed --noconfirm git base-devel
+        git clone https://aur.archlinux.org/yay-bin.git
+        cd yay-bin
+        makepkg -si --noconfirm
+        cd ..
+        rm -rf yay-bin
+    else
+        echo "✅ yay ya está instalado."
+    fi
+fi
 
 # -------------------------------
 # 📁 Selección de backup
@@ -59,22 +75,6 @@ else
     exit 0
 fi
 
-# -------------------------------
-# 🛠 Instalar yay
-# -------------------------------
-if confirmar "🛠 ¿Quieres verificar/instalar yay?"; then
-    if ! command -v yay &> /dev/null; then
-        echo "🛠 Instalando yay..."
-        sudo pacman -S --needed --noconfirm git base-devel
-        git clone https://aur.archlinux.org/yay-bin.git
-        cd yay-bin
-        makepkg -si --noconfirm
-        cd ..
-        rm -rf yay-bin
-    else
-        echo "✅ yay ya está instalado."
-    fi
-fi
 
 # -------------------------------
 # 📦 Instalación de paquetes
