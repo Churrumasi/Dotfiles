@@ -1,0 +1,14 @@
+[Added Associations]
+text/x-csrc=sublime_text.desktop;
+application/x-shellscript=sublime_text.desktop;userapp-.-F43462.desktop;
+text/plain=sublime_text.desktop;org.xfce.mousepad.desktop;
+image/png=org.nomacs.ImageLounge.desktop;sxiv.desktop;
+text/x-maven+xml=org.xfce.mousepad.desktop;
+image/jpeg=org.nomacs.ImageLounge.desktop;sxiv.desktop;
+application/zip=code.desktop;org.kde.ark.desktop;
+
+[Default Applications]
+application/x-shellscript=userapp-.-F43462.desktop
+text/plain=org.xfce.mousepad.desktop
+image/jpeg=sxiv.desktop
+application/zip=org.kde.ark.desktop

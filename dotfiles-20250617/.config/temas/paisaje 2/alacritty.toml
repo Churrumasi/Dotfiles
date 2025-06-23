@@ -25,3 +25,6 @@ blue    = "#FC7345"
 magenta = "#F88655"
 cyan    = "#EEBEA7"
 white   = "#f6e4d9"
+
+[font.normal]
+family = "MesloLGS NF"
