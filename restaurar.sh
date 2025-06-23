@@ -48,7 +48,50 @@ if confirmar "🛠 ¿Quieres verificar/instalar yay?"; then
         echo "✅ yay ya está instalado."
     fi
 fi
+# -------------------------------
+# 🎨 GRUB 
+# -------------------------------
+if confirmar "🎨 ¿Deseas instalar los temas de GRUB?"; then
+    git clone https://github.com/ChrisTitusTech/Top-5-Bootloader-Themes
+    cd Top-5-Bootloader-Themes
+    sudo ./install.sh
+    cd ..
+    rm -rf Top-5-Bootloader-Themes
+fi
 
+# -------------------------------
+# 🌀 Zsh y Oh My Zsh
+# -------------------------------
+if confirmar "🌀 ¿Quieres instalar Zsh y Oh My Zsh?"; then
+    if ! command -v zsh &> /dev/null; then
+        sudo pacman -S --needed --noconfirm zsh
+    fi
+
+    ZSH_PATH="$(command -v zsh)"
+    if ! grep -q "$ZSH_PATH" /etc/shells; then
+        echo "$ZSH_PATH" | sudo tee -a /etc/shells
+    fi
+
+    if [[ "$SHELL" != "$ZSH_PATH" ]]; then
+        chsh -s "$ZSH_PATH"
+    fi
+
+    if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+        RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    fi
+
+    yay -S --noconfirm zsh-theme-powerlevel10k-git
+    if ! grep -q "powerlevel10k.zsh-theme" ~/.zshrc; then
+        echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+    fi
+
+    if [[ -f ~/.cache/wal/colors-tty.sh ]]; then
+        chmod +x ~/.cache/wal/colors-tty.sh
+        if ! grep -q "colors-tty.sh" ~/.zshrc; then
+            echo "source ~/.cache/wal/colors-tty.sh" >> ~/.zshrc
+        fi
+    fi
+fi
 # -------------------------------
 # 📁 Selección de backup
 # -------------------------------
@@ -115,7 +158,7 @@ if confirmar "📁 ¿Deseas restaurar la carpeta ~/.config?"; then
 fi
 
 if confirmar "📄 ¿Deseas restaurar los dotfiles personales?"; then
-    for file in ".zshrc" ".bashrc" ".xinitrc" ".bash_profile"; do
+    for file in ".zshrc" ".bashrc" ".xinitrc" ".bash_profile"  ".p10k.zsh"; do
         if [[ -f "$LATEST_BACKUP/$file" ]]; then
             cp "$LATEST_BACKUP/$file" ~/
             echo "✔️ Restaurado $file"
@@ -153,50 +196,7 @@ if confirmar "🔧 ¿Deseas configurar Git con tus datos?"; then
     git config --global user.email "j63954923@gmail.com"
 fi
 
-# -------------------------------
-# 🎨 GRUB y wal
-# -------------------------------
-if confirmar "🎨 ¿Deseas instalar los temas de GRUB?"; then
-    git clone https://github.com/ChrisTitusTech/Top-5-Bootloader-Themes
-    cd Top-5-Bootloader-Themes
-    sudo ./install.sh
-    cd ..
-    rm -rf Top-5-Bootloader-Themes
-fi
 
-# -------------------------------
-# 🌀 Zsh y Oh My Zsh
-# -------------------------------
-if confirmar "🌀 ¿Quieres instalar Zsh y Oh My Zsh?"; then
-    if ! command -v zsh &> /dev/null; then
-        sudo pacman -S --needed --noconfirm zsh
-    fi
-
-    ZSH_PATH="$(command -v zsh)"
-    if ! grep -q "$ZSH_PATH" /etc/shells; then
-        echo "$ZSH_PATH" | sudo tee -a /etc/shells
-    fi
-
-    if [[ "$SHELL" != "$ZSH_PATH" ]]; then
-        chsh -s "$ZSH_PATH"
-    fi
-
-    if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-        RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    fi
-
-    yay -S --noconfirm zsh-theme-powerlevel10k-git
-    if ! grep -q "powerlevel10k.zsh-theme" ~/.zshrc; then
-        echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
-    fi
-
-    if [[ -f ~/.cache/wal/colors-tty.sh ]]; then
-        chmod +x ~/.cache/wal/colors-tty.sh
-        if ! grep -q "colors-tty.sh" ~/.zshrc; then
-            echo "source ~/.cache/wal/colors-tty.sh" >> ~/.zshrc
-        fi
-    fi
-fi
 
 if confirmar "🎨 ¿Quieres generar temas GTK con Oomox para todos los temas de ~/.config/temas?"; then
     echo "📦 Instalando dependencias para Oomox..."

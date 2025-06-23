@@ -1,0 +1,6 @@
+[Added Associations]
+application/vnd.microsoft.portable-executable=wine.desktop;
+application/x-msdownload=wine.desktop;
+
+[Default Applications]
+application/x-msdownload=wine.desktop

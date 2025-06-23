@@ -1,0 +1,9 @@
+activate-linux-git
+drawio
+jdownloader2
+netbeans-bin
+python-pywalfox
+swaylock-fancy-git
+unimatrix-git
+yay-bin
+yay-bin-debug

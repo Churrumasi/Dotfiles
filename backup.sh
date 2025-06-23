@@ -2,8 +2,21 @@
 
 set -euo pipefail
 
+# 🧠 Preguntar al usuario por el entorno de escritorio
+echo "Selecciona tu entorno de escritorio:"
+echo "1) Sway"
+echo "2) Hyprland"
+read -rp "Opción (1 o 2): " OPCION
+
+case "$OPCION" in
+  1) ENTORNO="Sway" ;;
+  2) ENTORNO="Hyprland" ;;
+  *) echo "❌ Opción inválida. Saliendo..."; exit 1 ;;
+esac
+
+# 📅 Fecha y nombre de carpeta con entorno
 FECHA=$(date +%Y%m%d)
-BACKUP_DIR="dotfiles-$FECHA"
+BACKUP_DIR="dotfiles-$FECHA ($ENTORNO)"
 CONFIG_BACKUP="$BACKUP_DIR/.config"
 
 echo "📦 Creando backup en '$BACKUP_DIR'..."
@@ -20,7 +33,7 @@ rsync -av --exclude='discord' \
           ~/.config/ "$CONFIG_BACKUP/"
 
 echo "📄 Copiando otros dotfiles..."
-for file in ".zshrc" ".bashrc" ".xinitrc" ".bash_profile"; do
+for file in ".zshrc" ".bashrc" ".xinitrc" ".bash_profile" ".p10k.zsh"; do
   if [[ -f ~/$file ]]; then
     cp ~/$file "$BACKUP_DIR/"
     echo "✔️ Copiado $file"

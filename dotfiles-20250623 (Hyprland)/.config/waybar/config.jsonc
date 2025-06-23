@@ -1,0 +1,116 @@
+{
+  "position": "bottom",
+  "height": 25,
+  "spacing": 6,
+
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces"
+    ],
+
+  "modules-center": [
+     "hyprland/window"
+      ],
+
+"modules-right": [
+  "tray",
+  "custom/cliphist",
+  "custom/bluetooth",
+  "clock",
+  "pulseaudio",
+  "battery",
+  "custom/power"
+],
+
+"clock": {
+  "format": "{:%H:%M}",
+  "format-alt": "{:%A %d %B, %Y}",
+  "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+},
+
+
+  "tray": {
+    "spacing": 10
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "format": "{name}",
+    "format-icons": {
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "~/.config/scripts/powermenu.sh" 
+  },
+  "custom/arch": {
+    "format": "", 
+    "tooltip": false,
+    "on-click": "~/.config/scripts/rofi.sh" 
+
+  },
+
+  "sway/window": {
+    "max-length": 50,
+    "format": " {}"
+  },
+"custom/cliphist": {
+  "format": "", // Cambiar por ícono Nerd Font si lo preferís
+  "tooltip": false,
+	"on-click": "cliphist list | rofi -dmenu -theme ~/.config/rofi/launchers/type-2/style-1.rasi | cliphist decode | wl-copy"
+
+},
+
+"pulseaudio": {
+  "format": "{icon} {volume}%",
+  "format-muted": "󰝟", // icono de mute
+  "format-icons": {
+    "default": [ "󰖀", "󰕾", "󰕿" ]  // bajo, medio, alto (Nerd Font)
+  },
+  "on-click": "pamixer -t",
+  "on-scroll-up": "pamixer -i 5",
+  "on-scroll-down": "pamixer -d 5"
+},
+
+
+"battery": {
+  "format": "{icon} {capacity}%",
+  "format-charging": "⚡ {capacity}%",
+  "format-icons": ["", "", "", "", ""]
+},
+
+"custom/notifications": {
+  "format": "🔔",
+  "tooltip": false,
+  "on-click": "dunstctl history-pop"
+},
+"custom/nm": {
+  "exec": "~/.config/scripts/wifi_status.sh",
+  "interval": 10,
+  "return-type": "json",
+  "on-click": "~/.config/scripts/network_toggle.sh toggle",
+  "tooltip": true
+},
+"custom/bluetooth": {
+  "exec": "~/.config/scripts/bluetooth_toggle.sh",
+  "on-click": "~/.config/scripts/bluetooth_toggle_click.sh",
+  "on-click-right": "blueman-manager",
+  "interval": 10,
+  "return-type": "json",
+  "on-click-middle": "bluetoothctl power off", // opcional
+  "exec-if": "bluetoothctl list | grep -q ."
+},
+
+"custom/screenshot": {
+  "format": "",
+  "tooltip": "Capturar pantalla",
+  "on-click": "~/.config/scripts/screenshot.sh"
+}
+
+
+}
