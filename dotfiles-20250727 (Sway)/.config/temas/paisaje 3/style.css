@@ -1,0 +1,99 @@
+* {
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+  font-size: 12px;
+  min-height: 0;
+  color: #cae1e4;
+}
+
+window#waybar {
+  background-color: #0f0d13;
+  border-top: 2px solid #AA8FA1;
+  box-shadow: inset 0 1px 0 #EDDC9E;
+  padding: 0 8px;
+}
+
+#workspaces {
+  margin: 0 4px;
+}
+#workspaces button {
+  padding: 2px 8px;
+  margin: 2px 2px;
+  background-color: transparent;
+  border: none;
+  color: #CF8A90;
+  transition: background 0.3s, color 0.3s;
+}
+#workspaces button.focused {
+  background-color: #A3748A;
+  color: #ffffff;
+  border-radius: 4px;
+}
+#workspaces button.urgent {
+  color: #ff5555;
+}
+
+#clock,
+#tray,
+#custom-arch,
+#custom-power,
+#window,
+#custom-cliphist,
+#pulseaudio,
+#battery,
+#custom-notifications,
+#custom-nm,
+#custom-bluetooth,
+#custom-screenshot {
+  padding: 2px 10px;
+  background-color: rgba(91, 183, 213, 0.1);
+  border-radius: 6px;
+  margin: 2px 4px;
+}
+
+#clock:hover {
+  background-color: #CF8A90;
+  color: #0f0d13;
+}
+#custom-arch {
+  color: #EDDC9E;
+}
+#custom-arch:hover {
+  background-color: #A3748A;
+  color: #ffffff;
+}
+#custom-power {
+  color: #ff5555;
+}
+#custom-power:hover {
+  background-color: #CF8A90;
+  color: #0f0d13;
+}
+#window {
+  color: #8d9d9f;
+}
+
+#custom-cliphist:hover,
+#pulseaudio:hover,
+#battery:hover,
+#custom-notifications:hover {
+  background-color: #CF8A90;
+  color: #0f0d13;
+}
+
+#custom-nm {
+  color: #AA8FA1;
+}
+#custom-nm:hover {
+  background-color: #EDDC9E;
+  color: #0f0d13;
+}
+
+#custom-bluetooth,
+#custom-screenshot {
+  color: #5BB7D5;
+}
+#custom-bluetooth:hover,
+#custom-screenshot:hover {
+  background-color: #EDDC9E;
+  color: #0f0d13;
+}

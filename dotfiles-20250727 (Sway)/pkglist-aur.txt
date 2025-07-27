@@ -1,0 +1,6 @@
+activate-linux-git
+drawio
+python-pywalfox
+swaylock-fancy-git
+yay-bin
+yay-bin-debug
