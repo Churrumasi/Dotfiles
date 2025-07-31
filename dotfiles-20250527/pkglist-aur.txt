@@ -1,7 +1,0 @@
-drawio
-jdownloader2
-netbeans-bin
-python-pywalfox
-swaylock-fancy-git
-yay-bin
-yay-bin-debug

@@ -19,6 +19,22 @@ FECHA=$(date +%Y%m%d)
 BACKUP_DIR="dotfiles-$FECHA ($ENTORNO)"
 CONFIG_BACKUP="$BACKUP_DIR/.config"
 
+# Listas de carpetas/archivos a respaldar según entorno
+SWAY_ITEMS=(
+  xfce4 waybar wal Thunar temas sway scripts rofi oomox-gtk-theme htop gtk-2.0 fastfetch dunst alacritty 
+  user-dirs.locale user-dirs.dirs QtProject.conf pavucontrol.ini mimeapps.list kdeglobals
+)
+HYPRLAND_ITEMS=(
+  xfce4 waybar wal Thunar temas scripts rofi oomox-gtk-theme Mousepad hypr htop gtk-3.0 fastfetch dunst alacritty 
+  user-dirs.locale user-dirs.dirs QtProject.conf pavucontrol.ini mimeapps.list
+)
+
+if [[ "$ENTORNO" == "Sway" ]]; then
+  ITEMS=("${SWAY_ITEMS[@]}")
+else
+  ITEMS=("${HYPRLAND_ITEMS[@]}")
+fi
+
 echo "📦 Creando backup en '$BACKUP_DIR'..."
 mkdir -p "$CONFIG_BACKUP"
 
@@ -27,10 +43,25 @@ pacman -Qqen > "$BACKUP_DIR/pkglist-pacman.txt"
 pacman -Qqem > "$BACKUP_DIR/pkglist-aur.txt"
 
 echo "🗂️ Respaldando configuración de ~/.config..."
-rsync -av --exclude='discord' \
-          --exclude='Code' \
-          --exclude='electron-flags.conf' \
-          ~/.config/ "$CONFIG_BACKUP/"
+for item in "${ITEMS[@]}"; do
+  # Si es archivo especial (no carpeta), copiar directo
+  if [[ -f "$HOME/.config/$item" ]]; then
+    cp "$HOME/.config/$item" "$CONFIG_BACKUP/"
+    echo "✔️ Copiado archivo $item"
+  elif [[ -d "$HOME/.config/$item" ]]; then
+    cp -r "$HOME/.config/$item" "$CONFIG_BACKUP/"
+    echo "✔️ Copiada carpeta $item"
+  fi
+done
+
+# Archivos sueltos fuera de .config
+for file in user-dirs.locale user-dirs.dirs QtProject.conf pavucontrol.ini mimeapps.list kdeglobals; do
+  # Solo respaldar si está en la lista de ITEMS
+  if [[ " ${ITEMS[@]} " =~ " $file " ]] && [[ -f "$HOME/.config/$file" ]]; then
+    cp "$HOME/.config/$file" "$CONFIG_BACKUP/"
+    echo "✔️ Copiado archivo $file"
+  fi
+done
 
 echo "📄 Copiando otros dotfiles..."
 for file in ".zshrc" ".bashrc" ".xinitrc" ".bash_profile" ".p10k.zsh"; do
@@ -47,11 +78,6 @@ if [[ -d ~/fondo ]]; then
     cp -r ~/fondo "$BACKUP_DIR/"
 fi
 
-echo "🔤 Respaldando fuentes locales (si existen)..."
-if [[ -d ~/.local/share/fonts ]]; then
-    mkdir -p "$BACKUP_DIR/fonts"
-    cp -r ~/.local/share/fonts/* "$BACKUP_DIR/fonts/"
-fi
 
 echo "⚙️ Guardando servicios habilitados..."
 systemctl list-unit-files --state=enabled --no-pager --no-legend | awk '{print $1}' > "$BACKUP_DIR/enabled-services.txt"
