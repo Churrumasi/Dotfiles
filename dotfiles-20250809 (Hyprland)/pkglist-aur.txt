@@ -1,0 +1,11 @@
+activate-linux-git
+delta-patcher
+drawio
+elecwhat-bin
+jdownloader2
+netbeans-bin
+python-pywalfox
+swaylock-fancy-git
+unimatrix-git
+yay-bin
+yay-bin-debug
