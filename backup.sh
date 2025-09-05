@@ -25,7 +25,7 @@ SWAY_ITEMS=(
   user-dirs.locale user-dirs.dirs QtProject.conf pavucontrol.ini mimeapps.list kdeglobals
 )
 HYPRLAND_ITEMS=(
-  xfce4 waybar wal Thunar temas scripts rofi oomox-gtk-theme Mousepad hypr htop gtk-3.0 fastfetch dunst alacritty 
+  xfce4 waybar wal Thunar temas scripts rofi oomox-gtk-theme Mousepad hypr htop gtk-3.0 fastfetch dunst kitty 
   user-dirs.locale user-dirs.dirs QtProject.conf pavucontrol.ini mimeapps.list
 )
 
