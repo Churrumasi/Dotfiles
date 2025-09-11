@@ -34,7 +34,7 @@ set -euo pipefail
 confirmar() {
     local pregunta="${1:-¿Continuar?}"
     read -rp "$pregunta (s/n): " RESP
-    [[ "$RESP" =~ ^[sS]$ ]
+    [[ "$RESP" =~ ^[sS]$ ]]
 }
 
 # -------------------------------
