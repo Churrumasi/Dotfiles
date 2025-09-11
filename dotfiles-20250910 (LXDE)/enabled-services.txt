@@ -1,0 +1,10 @@
+getty@.service
+lightdm.service
+NetworkManager-dispatcher.service
+NetworkManager-wait-online.service
+NetworkManager.service
+systemd-timesyncd.service
+tomcat10.service
+systemd-userdbd.socket
+remote-fs.target
+fstrim.timer

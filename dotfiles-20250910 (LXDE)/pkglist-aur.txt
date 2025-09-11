@@ -1,0 +1,4 @@
+python-pywalfox
+walcord
+yay-bin
+yay-bin-debug
