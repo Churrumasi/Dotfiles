@@ -1,0 +1,13 @@
+activate-linux-git
+delta-patcher
+drawio
+gnu-netcat
+jdownloader2
+linux-wallpaperengine-git
+netbeans-bin
+python-pywalfox
+swaylock-fancy-git
+unimatrix-git
+walcord
+yay-bin
+yay-bin-debug

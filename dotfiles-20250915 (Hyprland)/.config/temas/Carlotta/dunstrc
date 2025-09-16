@@ -1,0 +1,37 @@
+[global]
+    monitor = 0
+    follow = mouse
+    width = 300
+    height = (0, 300)
+    origin = bottom-right
+    offset = (10, 40)
+    scale = 0
+    notification_limit = 5
+    transparency = 0
+    frame_color = "#AD7193"
+    separator_color = "#648FAE"
+    padding = 10
+    horizontal_padding = 10
+    text_icon_padding = 8
+    icon_position = left
+    max_icon_size = 64
+    font = Monospace 10
+    line_height = 0
+
+[urgency_low]
+    background = "#16212b"
+    foreground = "#c9dde7"
+    frame_color = "#E2A9C0"
+    timeout = 4
+
+[urgency_normal]
+    background = "#AD7193"
+    foreground = "#c9dde7"
+    frame_color = "#9998AF"
+    timeout = 8
+
+[urgency_critical]
+    background = "#648FAE"
+    foreground = "#16212b"
+    frame_color = "#FF0000"
+    timeout = 0

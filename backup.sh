@@ -62,7 +62,7 @@ HYPRLAND_ITEMS=(
 
 LXDE_ITEMS=(
   xfce4 wal Thunar temas scripts rofi htop gtk-2.0 gtk-3.0 fastfetch dunst lxsession openbox pcmanfm
-  user-dirs.locale user-dirs.dirs QtProject.conf pavucontrol.ini mimeapps.list
+  user-dirs.locale user-dirs.dirs QtProject.conf pavucontrol.ini mimeapps.list alacritty
 )
 
 # Seleccionar lista según entorno
