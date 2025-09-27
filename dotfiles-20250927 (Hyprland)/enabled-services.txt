@@ -1,0 +1,15 @@
+bluetooth.service
+getty@.service
+NetworkManager-dispatcher.service
+NetworkManager-wait-online.service
+NetworkManager.service
+nvidia-hibernate.service
+nvidia-resume.service
+nvidia-suspend.service
+sddm.service
+systemd-timesyncd.service
+tailscaled.service
+udisks2.service
+systemd-userdbd.socket
+remote-fs.target
+fstrim.timer
