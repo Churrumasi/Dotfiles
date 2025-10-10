@@ -1,8 +1,0 @@
-gnu-netcat
-jdownloader2
-netbeans-bin
-python-pywalfox
-swaylock-fancy-git
-unimatrix-git
-walcord
-

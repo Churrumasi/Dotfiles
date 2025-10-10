@@ -1,6 +1,0 @@
-#!/bin/bash
-# Desactivar exit node y volver al estado normal
-
-echo "🔴 Desactivando VPN (salida por red local)..."
-sudo tailscale up --reset
-sudo tailscale up
