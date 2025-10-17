@@ -1,4 +1,0 @@
-@lxpanel --profile LXDE
-@pcmanfm --desktop --profile LXDE
-@xscreensaver -no-splash
-@feh --bg-scale ~/.config/fondo/Lynette_4k_16x9.png

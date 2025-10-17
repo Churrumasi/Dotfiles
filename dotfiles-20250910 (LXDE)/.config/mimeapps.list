@@ -1,6 +1,0 @@
-[Default Applications]
-text/plain=org.xfce.mousepad.desktop
-x-scheme-handler/discord=vesktop.desktop
-
-[Added Associations]
-text/plain=org.xfce.mousepad.desktop;

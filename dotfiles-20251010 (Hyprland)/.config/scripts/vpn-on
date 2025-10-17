@@ -1,7 +1,0 @@
-#!/bin/bash
-# Activar exit node con Tailscale
-
-EXIT_NODE="100.78.128.103"  # o reemplaza por la IP: 100.124.141.26
-
-echo "🟢 Activando VPN a través de $EXIT_NODE..."
-sudo tailscale up --exit-node=$EXIT_NODE --accept-routes

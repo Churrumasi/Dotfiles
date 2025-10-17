@@ -65,6 +65,7 @@ iw
 iwd
 jp2a
 kitty
+kdialog
 lib32-alsa-plugins
 lib32-nvidia-utils
 lib32-openal
