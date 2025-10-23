@@ -1,0 +1,74 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+  "logo": {
+    "type": "kitty-direct",
+    "source": "/home/churrumais/.config/logos/fastfetch.png",
+    "width": 40,      // ancho en celdas (ajústalo si tu imagen es muy grande)
+    "height": 20,     // alto en celdas (más grande para 512x512)
+    "padding": {
+      "top": 10,       // espacio antes del texto
+      "right": 3,     // separación de la imagen y texto
+      "center": true  // centra la imagen verticalmente respecto al texto
+    }
+  },
+
+  "display": {
+    "separator": "│",
+    "color": "blue"
+  },
+
+  "modules": [
+    { "type": "custom", "format": "╭────────────── Información del Sistema ──────────────╮" },
+    "break",
+
+    { "key": "  Sistema Operativo", "type": "os" },
+    { "key": "  Núcleo", "type": "kernel" },
+    { "key": "  Entorno", "type": "de" },
+    { "key": "  Gestor de Ventanas", "type": "wm" },
+    { "key": "  Shell", "type": "shell" },
+    { "key": "  Terminal", "type": "terminal" },
+
+    "break",
+    { "type": "custom", "format": "╰──────────────────────────────────────────────────────╯" },
+    "break",
+    { "type": "custom", "format": "╭──────────────────── Hardware ────────────────────────╮" },
+    "break",
+
+    { "key": "󰍛  CPU", "type": "cpu" },
+    { "key": "󰂫  GPU", "type": "gpu" },
+    { "key": "󰍹  Memoria RAM", "type": "memory" },
+    { "key": "  Disco", "type": "disk" },
+
+    "break",
+    { "type": "custom", "format": "╰──────────────────────────────────────────────────────╯" },
+    "break",
+    { "type": "custom", "format": "╭──────────────────── Red ─────────────────────────────╮" },
+    "break",
+
+    { "key": "  Wi-Fi", "type": "wifi" },
+    { "key": "󰩟  IP Local", "type": "localip" },
+
+    "break",
+    { "type": "custom", "format": "╰──────────────────────────────────────────────────────╯" },
+    "break",
+    { "type": "custom", "format": "╭──────────────────── Sesión ──────────────────────────╮" },
+    "break",
+
+    { "key": "  Usuario", "type": "user" },
+    { "key": "  Host", "type": "host" },
+    { "key": "󰅐  Tiempo Activo", "type": "uptime" },
+    { "key": "  Paquetes", "type": "packages" },
+
+    "break",
+    { "type": "custom", "format": "╰──────────────────────────────────────────────────────╯" },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 6,
+      "symbol": "circle",
+      "block": { "width": 8 }
+    }
+  ]
+}
+
