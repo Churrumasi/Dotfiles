@@ -1,0 +1,18 @@
+2025/11/02-00:42:58.773 1c304 Reusing MANIFEST /home/churrumais/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
+2025/11/02-00:42:58.778 1c304 Recovering log #19
+2025/11/02-00:42:58.778 1c304 Reusing old log /home/churrumais/.config/vesktop/sessionData/Local Storage/leveldb/000019.log 
+2025/11/02-00:43:58.781 1c302 Level-0 table #23: started
+2025/11/02-00:43:58.783 1c302 Level-0 table #23: 44850 bytes OK
+2025/11/02-00:43:58.784 1c302 Delete type=0 #19
+2025/11/02-01:43:46.555 1c3b2 Level-0 table #25: started
+2025/11/02-01:43:46.558 1c3b2 Level-0 table #25: 39128 bytes OK
+2025/11/02-01:43:46.559 1c3b2 Delete type=0 #22
+2025/11/02-01:43:46.559 1c3b2 Compacting 4@0 + 1@1 files
+2025/11/02-01:43:46.561 1c3b2 Generated table #26@0: 33 keys, 30430 bytes
+2025/11/02-01:43:46.561 1c3b2 Compacted 4@0 + 1@1 files => 30430 bytes
+2025/11/02-01:43:46.562 1c3b2 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/11/02-01:43:46.562 1c3b2 Delete type=2 #16
+2025/11/02-01:43:46.562 1c3b2 Delete type=2 #25
+2025/11/02-01:43:46.562 1c3b2 Delete type=2 #18
+2025/11/02-01:43:46.562 1c3b2 Delete type=2 #20
+2025/11/02-01:43:46.562 1c3b2 Delete type=2 #23
