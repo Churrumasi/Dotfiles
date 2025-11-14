@@ -1,0 +1,26 @@
+[Default Applications]
+text/plain=org.xfce.mousepad.desktop
+x-scheme-handler/discord=vesktop.desktop
+image/png=gpicview.desktop
+image/gif=gpicview.desktop
+application/x-msdownload=wine.desktop
+inode/directory=thunar.desktop
+image/jpeg=gpicview.desktop
+application/java-archive=java-java-openjdk.desktop
+x-scheme-handler/discord-719647875465871400=discord-719647875465871400.desktop
+video/mp4=vlc.desktop
+
+[Added Associations]
+text/plain=staruml.desktop;org.xfce.mousepad.desktop;
+image/png=gpicview.desktop;
+image/gif=gpicview.desktop;
+application/schema+json=org.xfce.mousepad.desktop;
+application/java-archive=java-java-openjdk.desktop;
+application/x-msdownload=wine.desktop;
+text/html=firefox.desktop;org.xfce.mousepad.desktop;
+inode/directory=thunar.desktop;
+application/x-shellscript=org.xfce.mousepad.desktop;
+application/x-zerosize=org.xfce.mousepad.desktop;
+application/zip=engrampa.desktop;code.desktop;
+image/jpeg=gpicview.desktop;
+audio/mpeg=lxmusic.desktop;

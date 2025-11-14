@@ -1,8 +1,0 @@
-#@pcmanfm --desktop --profile LXDE
-@lxpanel --profile LXDE
-@xscreensaver -no-splash
-@/home/churrumais/.config/scripts/restaurar_tema.sh 
-@udiskie -a -t 
-#@optimus-manager-qt
-@blueman-applet
-
