@@ -244,7 +244,7 @@ fi
 # Instala dependencias, clona Oomox y genera temas GTK para cada fondo en ~/.config/temas.
 if confirmar "¿Quieres generar temas GTK con Oomox para todos los temas de ~/.config/temas?"; then
     echo "Instalando dependencias para Oomox..."
-    sudo pacman -S --needed --noconfirm bash grep sed bc glib2 gdk-pixbuf2 sassc gtk-engine-murrine gtk-engines librsvg
+    sudo pacman -S --needed --noconfirm bash grep sed bc glib2 gdk-pixbuf2 sassc  librsvg
 
     echo "Clonando Oomox GTK Theme..."
     git clone https://github.com/themix-project/oomox-gtk-theme.git

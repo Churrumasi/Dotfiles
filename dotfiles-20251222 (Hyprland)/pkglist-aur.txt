@@ -1,0 +1,14 @@
+gnu-netcat
+jdownloader2
+netbeans-bin
+optimus-manager-git
+optimus-manager-qt
+pipes.sh
+python-pywal16
+python-pywalfox
+sonic2013-git
+swaylock-fancy-git
+unimatrix-git
+walcord
+yay-bin
+yay-bin-debug
