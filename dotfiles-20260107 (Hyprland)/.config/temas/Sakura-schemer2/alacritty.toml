@@ -1,0 +1,26 @@
+[colors.primary]
+background = "#0d131e"
+foreground = "#c2c4c6"
+
+[colors.normal]
+black = "#0d131e"
+red = "#95a7b5"
+green = "#a4bcc7"
+yellow = "#a4bcc7"
+blue = "#e2afaa"
+magenta = "#e2afaa"
+cyan = "#d0bbcd"
+white = "#c2c4c6"
+
+[colors.bright]
+black = "#5c6370"
+red = "#95a7b5"
+green = "#a4bcc7"
+yellow = "#a4bcc7"
+blue = "#e2afaa"
+magenta = "#e2afaa"
+cyan = "#d0bbcd"
+white = "#c2c4c6"
+
+[font.normal]
+family = "MesloLGS NF"

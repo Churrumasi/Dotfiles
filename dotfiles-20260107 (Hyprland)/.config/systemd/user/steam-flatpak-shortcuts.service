@@ -1,0 +1,14 @@
+[Unit]
+Description=Steam Flatpak desktop shortcuts watcher
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/steam-flatpak-shortcuts.py --verbose
+Restart=on-failure
+RestartSec=2
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
