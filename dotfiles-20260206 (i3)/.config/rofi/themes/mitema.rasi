@@ -1,0 +1,8 @@
+* {
+    background:     #2E3440FF; /* nord0 */
+    background-alt: #3B4252FF; /* nord1 */
+    foreground:     #E5E9F0FF; /* nord5 */
+    selected:       #81A1C1FF; /* nord9 */
+    active:         #88C0D0FF; /* nord8 */
+    urgent:         #BF616AFF; /* nord11 */
+}

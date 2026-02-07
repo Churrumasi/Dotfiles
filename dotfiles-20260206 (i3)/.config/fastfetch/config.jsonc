@@ -1,0 +1,51 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "separator": " ",
+    "color": "blue"
+  },
+  "modules": [
+    { "type": "custom", "format": "— Información del sistema —" },
+    "break",
+
+    { "key": "  OS", "type": "os" },
+    { "key": "  Kernel", "type": "kernel" },
+    { "key": "  DE", "type": "de" },
+    { "key": "  WM", "type": "wm" },
+    { "key": "  Shell", "type": "shell" },
+    { "key": "  Term", "type": "terminal" },
+
+    "break",
+    { "type": "custom", "format": "— Hardware —" },
+    "break",
+
+    { "key": "󰍛  CPU", "type": "cpu" },
+    { "key": "󰂫  GPU", "type": "gpu" },
+    { "key": "󰍹  RAM", "type": "memory" },
+    { "key": "  Disco", "type": "disk" },
+
+    "break",
+    { "type": "custom", "format": "— Red —" },
+    "break",
+
+    { "key": "  Wi-Fi", "type": "wifi" },
+    { "key": "󰩟  IP", "type": "localip" },
+
+    "break",
+    { "type": "custom", "format": "— Sesión —" },
+    "break",
+
+    { "key": "  User", "type": "user" },
+    { "key": "  Host", "type": "hostn" },
+    { "key": "󰅐  Uptime", "type": "uptime" },
+    { "key": "  Pkgs", "type": "packages" },
+
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle",
+      "block": { "width": 4 }
+    }
+  ]
+}
