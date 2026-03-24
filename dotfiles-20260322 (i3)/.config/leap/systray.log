@@ -1,0 +1,12 @@
+{"level":"info","logFile":"/home/churrumais/.config/leap/systray.log","hint":"you can change the log level with env LOG_LEVEL=INFO|DEBUG|TRACE","time":"2026-03-19T10:03:51-07:00","message":"Enabling logging"}
+{"level":"info","time":"2026-03-19T10:03:51-07:00","message":"Not autostarting OpenVPN"}
+{"level":"info","url":"https://downloads.leap.se/RiseupVPN/linux/lastver","time":"2026-03-19T10:03:52-07:00","message":"Checking for updates"}
+{"level":"info","updateAvailable":false,"time":"2026-03-19T10:03:52-07:00","message":"Sucessfully checked if there is an update"}
+{"level":"info","time":"2026-03-19T10:03:53-07:00","message":"Stopping firewall"}
+{"level":"warn","error":"exit status 127","cmd":"/usr/sbin/bitmask-root firewall stop","time":"2026-03-19T10:03:53-07:00","message":"Error running bitmask-root: \"Error creating textual authentication agent: Error opening current controlling terminal for the process (`/dev/tty'): No such device or address\""}
+{"level":"warn","error":"exit status 127","time":"2026-03-19T10:03:53-07:00","message":"Could not stop firewall"}
+{"level":"info","time":"2026-03-19T10:03:53-07:00","message":"Using transport openvpn"}
+{"level":"info","transport":"openvpn","time":"2026-03-19T10:03:53-07:00","message":"Setting transport"}
+{"level":"info","time":"2026-03-19T10:03:53-07:00","message":"Enabled UDP"}
+{"level":"info","time":"2026-03-19T10:03:53-07:00","message":"Fetching gateways..."}
+{"level":"warn","error":"Post \"https://api.black.riseup.net:9001/json\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)","time":"2026-03-19T10:05:23-07:00","message":"Could not fetch geolocation"}
