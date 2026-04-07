@@ -12,8 +12,6 @@ python-pywalfox
 ttf-meslo-nerd-font-powerlevel10k
 vesktop
 visual-studio-code-electron-bin
-walcord
-walcord-debug
 xwinwrap-git
 yay-bin
 yay-bin-debug
