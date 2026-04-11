@@ -1,0 +1,17 @@
+appimagelauncher
+bibata-cursor-theme
+i3lock-fancy-git
+jdownloader2
+netbeans-bin
+nordic-theme
+pipes.sh
+python-pywalfox
+ttf-meslo-nerd-font-powerlevel10k
+vesktop
+visual-studio-code-bin
+walcord
+walcord-debug
+xwinwrap-git
+yay-bin
+yay-bin-debug
+zsh-theme-powerlevel10k-git
