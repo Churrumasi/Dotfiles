@@ -71,7 +71,7 @@ if confirmar "¿Instalar iconos Tela Circle?"; then
 
     git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git
     cd Tela-circle-icon-theme
-    ./install.sh
+    ./install.sh -a
     cd ..
     rm -rf Tela-circle-icon-theme
 fi
@@ -149,6 +149,11 @@ if confirmar "¿Generar temas GTK con Oomox?"; then
 
     cd ..
     rm -rf oomox
+fi
+if confirmar "¿Deseas instalar el tema SDDM Astronaut?"; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"
+else
+    echo "Instalación del tema SDDM Astronaut omitida."
 fi
 
 # -------------------------------
