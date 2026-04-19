@@ -1,0 +1,33 @@
+[colors.primary]
+background = "#180f23"
+foreground = "#c5c3c8"
+
+[colors.cursor]
+text = "#180f23"
+cursor = "#c5c3c8"
+
+[colors.normal]
+black   = "#180f23"
+red     = "#90556E"
+green   = "#6C658F"
+yellow  = "#5E41A4"
+blue    = "#946F98"
+magenta = "#AB67B7"
+cyan    = "#8D908A"
+white   = "#c5c3c8"
+
+[colors.bright]
+black   = "#675e74"
+red     = "#90556E"
+green   = "#6C658F"
+yellow  = "#5E41A4"
+blue    = "#946F98"
+magenta = "#AB67B7"
+cyan    = "#8D908A"
+white   = "#c5c3c8"
+
+[font]
+size = 7.5
+
+[font.normal]
+family = "MesloLGS NF"

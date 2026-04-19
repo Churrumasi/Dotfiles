@@ -1,0 +1,33 @@
+[global]
+    monitor = 0
+    follow = mouse
+    width = 300
+    height = (0, 300)
+    origin = bottom-right
+    offset = (10, 40)
+
+    frame_color = "#81A1C1"      # nord9
+    separator_color = "#4C566A"  # nord3
+
+    padding = 10
+    text_icon_padding = 8
+    max_icon_size = 64
+    font = Monospace 10
+
+[urgency_low]
+    background = "#2E3440"   # nord0
+    foreground = "#E5E9F0"   # nord5
+    frame_color = "#A3BE8C"  # nord14
+    timeout = 4
+
+[urgency_normal]
+    background = "#434C5E"   # nord2
+    foreground = "#E5E9F0"   # nord5
+    frame_color = "#81A1C1"  # nord9
+    timeout = 8
+
+[urgency_critical]
+    background = "#4C566A"   # nord3
+    foreground = "#ECEFF4"   # nord6
+    frame_color = "#BF616A"  # nord11
+    timeout = 0

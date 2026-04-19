@@ -127,7 +127,54 @@ if confirmar "¿Configurar Git?"; then
 fi
 
 # -------------------------------
-# 🎨 Oomox GTK (Debian)
+# Instalar pywal y pywalfox
+# -------------------------------
+if confirmar "¿Instalar pywal y pywalfox?"; then
+    sudo apt install -y python3-pip
+    python3 -m pip install --user pywal pywalfox
+fi
+
+# -------------------------------
+# 🖥️ Instalar xwinwrap
+# -------------------------------
+if confirmar "¿Instalar xwinwrap?"; then
+    sudo apt install -y git build-essential xorg-dev libx11-dev x11proto-xext-dev \
+      libxrender-dev libxext-dev
+
+    git clone --depth=1 https://github.com/takase1121/xwinwrap.git
+    cd xwinwrap
+    make
+    sudo make install
+    cd ..
+    rm -rf xwinwrap
+fi
+
+# -------------------------------
+# 🚀 Instalar SDDM Astronaut Theme
+# -------------------------------
+if confirmar "¿Instalar sddm-astronaut-theme?"; then
+    sudo apt install -y git sddm qt6-svg qt6-virtualkeyboard qt6-multimedia \
+      qml-module-qtquick-controls qml-module-qtquick-effects libxcb-cursor0
+
+    sudo rm -rf /usr/share/sddm/themes/sddm-astronaut-theme
+    sudo git clone -b master --depth=1 \
+      https://github.com/keyitdev/sddm-astronaut-theme.git \
+      /usr/share/sddm/themes/sddm-astronaut-theme
+
+    if [[ -d /usr/share/sddm/themes/sddm-astronaut-theme/Fonts ]]; then
+        sudo cp -r /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
+        sudo fc-cache -f
+    fi
+
+    sudo mkdir -p /etc/sddm.conf.d
+    echo -e "[Theme]\nCurrent=sddm-astronaut-theme" \
+      | sudo tee /etc/sddm.conf.d/astronaut.conf >/dev/null
+    echo -e "[General]\nInputMethod=qtvirtualkeyboard" \
+      | sudo tee /etc/sddm.conf.d/virtualkbd.conf >/dev/null
+fi
+
+# -------------------------------
+# Oomox GTK (Debian)
 # -------------------------------
 if confirmar "¿Generar temas GTK con Oomox?"; then
     sudo apt install -y \
@@ -149,11 +196,6 @@ if confirmar "¿Generar temas GTK con Oomox?"; then
 
     cd ..
     rm -rf oomox
-fi
-if confirmar "¿Deseas instalar el tema SDDM Astronaut?"; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"
-else
-    echo "Instalación del tema SDDM Astronaut omitida."
 fi
 
 # -------------------------------

@@ -13,12 +13,14 @@ echo "Selecciona tu entorno de escritorio:"
 echo "1) Sway"
 echo "2) Hyprland"
 echo "3) LXDE"
-read -rp "Opción (1, 2 o 3): " OPCION
+echo "4) i3"
+read -rp "Opción (1, 2, 3 o 4): " OPCION
 
 case "$OPCION" in
   1) ENTORNO="Sway (Debian)" ;;
   2) ENTORNO="Hyprland (Debian)" ;;
   3) ENTORNO="LXDE (Debian)" ;;
+  4) ENTORNO="i3 (Debian)" ;;
   *) echo "❌ Opción inválida. Saliendo..."; exit 1 ;;
 esac
 
@@ -50,12 +52,20 @@ LXDE_ITEMS=(
   user-dirs.locale user-dirs.dirs mimeapps.list
 )
 
+I3_ITEMS=(
+  alacritty dunst fastfetch gtk-2.0 gtk-3.0 htop i3 kitty
+  picom polybar rofi scripts temas Thunar xfce4
+  user-dirs.locale user-dirs.dirs mimeapps.list
+)
+
 if [[ "$ENTORNO" == "Sway (Debian)" ]]; then
   ITEMS=("${SWAY_ITEMS[@]}")
 elif [[ "$ENTORNO" == "Hyprland (Debian)" ]]; then
   ITEMS=("${HYPRLAND_ITEMS[@]}")
-else
+elif [[ "$ENTORNO" == "LXDE (Debian)" ]]; then
   ITEMS=("${LXDE_ITEMS[@]}")
+else
+  ITEMS=("${I3_ITEMS[@]}")
 fi
 
 # -------------------------------
