@@ -71,13 +71,48 @@ if kdialog --yesno "¿Quieres crear un segundo fondo recortado (1600x1200)?" --t
 
     if [[ -n "$W" && "$W" -gt 50 ]]; then
         
-        # Crop + resize EXACTO a 1600x1200
-        convert "$DEST_DIR/fondo.png" \
-            -crop "${W}x${H}+${X}+${Y}" \
-            -resize 1600x1200^ \
-            -gravity center \
-            -extent 1600x1200 \
-            "$DEST_DIR/fondo_crop.png"
+# Resolución real de la imagen
+read IMG_W IMG_H <<< $(identify -format "%w %h" "$DEST_DIR/fondo.png")
+
+# Resolución de pantalla
+read SCR_W SCR_H <<< $(xdpyinfo | awk '/dimensions/{print $2}' | tr 'x' ' ')
+
+# Calcular escala que usa feh (manteniendo aspecto)
+SCALE=$(awk "BEGIN {
+    sx = $SCR_W / $IMG_W;
+    sy = $SCR_H / $IMG_H;
+    print (sx < sy ? sx : sy)
+}")
+
+# Tamaño real mostrado en pantalla
+DISP_W=$(awk "BEGIN {printf \"%d\", $IMG_W * $SCALE}")
+DISP_H=$(awk "BEGIN {printf \"%d\", $IMG_H * $SCALE}")
+
+# Offset (centrado en pantalla)
+OFF_X=$(( (SCR_W - DISP_W) / 2 ))
+OFF_Y=$(( (SCR_H - DISP_H) / 2 ))
+
+# Ajustar coordenadas del usuario
+ADJ_X=$(( X - OFF_X ))
+ADJ_Y=$(( Y - OFF_Y ))
+
+# Evitar valores negativos
+(( ADJ_X < 0 )) && ADJ_X=0
+(( ADJ_Y < 0 )) && ADJ_Y=0
+
+# Escalar a resolución original
+REAL_X=$(awk "BEGIN {printf \"%d\", $ADJ_X / $SCALE}")
+REAL_Y=$(awk "BEGIN {printf \"%d\", $ADJ_Y / $SCALE}")
+REAL_W=$(awk "BEGIN {printf \"%d\", $W / $SCALE}")
+REAL_H=$(awk "BEGIN {printf \"%d\", $H / $SCALE}")
+
+# Crop final
+convert "$DEST_DIR/fondo.png" \
+    -crop "${REAL_W}x${REAL_H}+${REAL_X}+${REAL_Y}" \
+    -resize 1600x1200^ \
+    -gravity center \
+    -extent 1600x1200 \
+    "$DEST_DIR/fondo_crop.png"
 
         kdialog --msgbox "Segundo fondo guardado como:\n$DEST_DIR/fondo_crop.png (1600x1200)"
 
@@ -308,7 +343,8 @@ padding-right = 1
 module-margin = 1
 
 font-0 = "JetBrainsMono Nerd Font:size=10;2"
-font-1 = "JetBrainsMono Nerd Font:size=12;3"
+font-1 = "Symbols Nerd Font:size=10;2"
+font-2 = "NotoSans Nerd Font:size=10;2"
 
 tray-position = none
 wm-restack = i3
@@ -320,7 +356,7 @@ modules-right = tray audio battery clock power
 
 [module/arch]
 type = custom/text
-content = 
+content = 
 content-foreground = \${colors.blue}
 content-padding = 1
 click-left = ~/.config/scripts/rofi.sh
@@ -333,7 +369,7 @@ pin-workspaces = true
 show-urgent = true
 strip-wsnumbers = true
 
-ws-icon-default = 
+ws-icon-default = 
 
 label-focused = %name%
 label-focused-foreground = \${colors.background}
