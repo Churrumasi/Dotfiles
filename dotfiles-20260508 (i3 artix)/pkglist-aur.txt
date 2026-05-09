@@ -1,0 +1,14 @@
+asciiquarium-transparent-git
+bibata-cursor-theme
+docker-desktop
+eden-nightly-bin
+i3lock-fancy-git
+jdownloader2
+netbeans-bin
+python-pywalfox
+tela-circle-icon-theme-all-git
+vesktop
+visual-studio-code-bin
+xwinwrap-git
+yay-bin
+zsh-theme-powerlevel10k-git
