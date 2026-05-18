@@ -30,7 +30,8 @@ esac
 # 📅 Fecha y nombre de carpeta de backup
 # -------------------------------
 FECHA=$(date +%Y%m%d)
-BACKUP_DIR="dotfiles-$FECHA ($ENTORNO)"
+# Diferenciación para Artix con runit en el nombre de la carpeta
+BACKUP_DIR="dotfiles-Artix-runit-$FECHA ($ENTORNO)"
 CONFIG_BACKUP="$BACKUP_DIR/.config"
 
 # -------------------------------
@@ -55,7 +56,7 @@ I3_ITEMS=(
   alacritty dunst fastfetch fastfetch-femboy-editicon gtk-2.0 gtk-3.0 htop i3 kitty logos
   picom Plantillas polybar rofi scripts temas xfce4 kactivitymanagerdrc khelpcenterrc
   user-dirs.locale user-dirs.dirs QtProject.conf pavucontrol.ini mimeapps.list lxtask.conf
-  pmbootstrap_v3.cfg powermanagementprofilesrc
+  pmbootstrap_v3.cfg powermanagementprofilesrc wal
 )
 
 # Seleccionar lista según entorno
@@ -144,7 +145,33 @@ SERVICE_DIRS=(
 if [[ ! -s "$BACKUP_DIR/enabled-services.txt" ]]; then
   echo "No se encontraron servicios habilitados en rutas típicas de runit." > "$BACKUP_DIR/enabled-services.txt"
 fi
+# -------------------------------
+# 🛠️ Respaldar servicios personalizados de runit
+# -------------------------------
+echo "🛠️ Respaldando servicios personalizados de runit..."
 
+CUSTOM_SERVICES_DIR="$BACKUP_DIR/runit-services"
+mkdir -p "$CUSTOM_SERVICES_DIR"
+
+for service in /etc/runit/sv/*; do
+  SERVICE_NAME=$(basename "$service")
+
+  # Ignorar servicios comunes del sistema
+  case "$SERVICE_NAME" in
+    agetty-*|dbus|NetworkManager|connmand|sshd|cron|cronie|udevd|syslog-ng|dhcpcd)
+      continue
+      ;;
+  esac
+
+  if [[ -d "$service" ]]; then
+    mkdir -p "$CUSTOM_SERVICES_DIR/$SERVICE_NAME"
+
+    # Copiar todo EXCEPTO supervise
+    rsync -a --exclude='supervise' "$service/" "$CUSTOM_SERVICES_DIR/$SERVICE_NAME/"
+
+    echo "✔️ Servicio respaldado: $SERVICE_NAME"
+  fi
+done
 # -------------------------------
 # ✅ Resumen de backup realizado
 # -------------------------------
