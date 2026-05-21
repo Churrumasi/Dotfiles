@@ -60,40 +60,34 @@ instalar_lista_paquetes() {
     rm -f "$tmp"
 }
 # -------------------------------
-# 🛠️ Restaurar servicios personalizados de runit
+# Función para habilitar servicios runit
 # -------------------------------
-if confirmar "¿Deseas restaurar los servicios personalizados de runit?"; then
-    if [[ -d "$LATEST_BACKUP/runit-services" ]]; then
-        sudo mkdir -p /etc/runit/sv
+habilitar_servicio_runit() {
+    local servicio="$1"
+    local origen=""
+    local destino="/run/runit/service/$servicio"
 
-        for service_dir in "$LATEST_BACKUP/runit-services"/*; do
-            [[ -d "$service_dir" ]] || continue
-            service_name=$(basename "$service_dir")
+    for base in /etc/runit/sv /etc/sv /run/runit/service /var/service; do
+        if [[ -d "$base/$servicio" ]]; then
+            origen="$base/$servicio"
+            break
+        fi
+    done
 
-            sudo mkdir -p "/etc/runit/sv/$service_name"
-            sudo rsync -a --delete --exclude='supervise' "$service_dir/" "/etc/runit/sv/$service_name/"
-
-            echo "✔️ Servicio restaurado: $service_name"
-        done
-    else
-        echo "No se encontró la carpeta runit-services en $LATEST_BACKUP"
+    if [[ -z "$origen" ]]; then
+        echo "⚠️ Servicio no encontrado: $servicio"
+        return 0
     fi
-fi
 
-# -------------------------------
-# ⚙️ Activar servicios runit
-# -------------------------------
-if confirmar "¿Deseas activar servicios guardados?"; then
-    if [[ -f "$LATEST_BACKUP/enabled-services.txt" ]]; then
-        while IFS= read -r service; do
-            [[ -z "$service" ]] && continue
-            [[ "$service" =~ ^# ]] && continue
-            habilitar_servicio_runit "$service"
-        done < "$LATEST_BACKUP/enabled-services.txt"
+    sudo mkdir -p /run/runit/service
+
+    if [[ -L "$destino" ]]; then
+        echo "✔️ Servicio ya habilitado: $servicio"
     else
-        echo "enabled-services.txt no encontrado en $LATEST_BACKUP"
+        sudo ln -s "$origen" "$destino"
+        echo "✔️ Habilitado: $servicio"
     fi
-fi
+}
 
 # -------------------------------
 # ➕ Agregar Chaotic AUR (repositorio de paquetes)
@@ -278,6 +272,27 @@ if confirmar "¿Deseas restaurar los dotfiles personales?"; then
 fi
 
 # -------------------------------
+# 🛠️ Restaurar servicios personalizados de runit
+# -------------------------------
+if confirmar "¿Deseas restaurar los servicios personalizados de runit?"; then
+    if [[ -d "$LATEST_BACKUP/runit-services" ]]; then
+        sudo mkdir -p /etc/runit/sv
+
+        for service_dir in "$LATEST_BACKUP/runit-services"/*; do
+            [[ -d "$service_dir" ]] || continue
+            service_name=$(basename "$service_dir")
+
+            sudo mkdir -p "/etc/runit/sv/$service_name"
+            sudo rsync -a --delete --exclude='supervise' "$service_dir/" "/etc/runit/sv/$service_name/"
+
+            echo "✔️ Servicio restaurado: $service_name"
+        done
+    else
+        echo "No se encontró la carpeta runit-services en $LATEST_BACKUP"
+    fi
+fi
+
+# -------------------------------
 # ⚙️ Activar servicios runit
 # -------------------------------
 if confirmar "¿Deseas activar servicios guardados?"; then
@@ -291,7 +306,6 @@ if confirmar "¿Deseas activar servicios guardados?"; then
         echo "enabled-services.txt no encontrado en $LATEST_BACKUP"
     fi
 fi
-
 # -------------------------------
 # 🧩 Configurar Git
 # -------------------------------
