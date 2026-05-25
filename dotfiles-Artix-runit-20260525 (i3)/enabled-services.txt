@@ -1,0 +1,17 @@
+agetty-tty1
+agetty-tty2
+agetty-tty3
+agetty-tty4
+agetty-tty5
+agetty-tty6
+bluetoothd
+dbus
+docker
+logind
+NetworkManager
+platform-profile-notify
+postgresql
+sddm
+sshd
+udevd
+warp-svc
