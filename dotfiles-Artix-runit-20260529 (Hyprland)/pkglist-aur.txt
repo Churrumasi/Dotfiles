@@ -1,0 +1,11 @@
+asciiquarium-transparent-git
+bibata-cursor-theme
+eden-preview-pgo-bin
+python-pywalfox
+tela-circle-icon-theme-all-git
+ttf-ms-fonts
+ventoy-bin
+vesktop
+visual-studio-code-bin
+yay-bin
+zsh-theme-powerlevel10k-git

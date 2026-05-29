@@ -1,0 +1,15 @@
+#!/bin/sh
+
+LAST=""
+
+while true; do
+    CURRENT=$(cat /sys/firmware/acpi/platform_profile 2>/dev/null)
+
+    if [ "$CURRENT" != "$LAST" ]; then
+        LAST="$CURRENT"
+
+        sudo -u churrumais /home/churrumais/.config/scripts/platform-notify-wrapper.sh
+    fi
+
+    sleep 1
+done

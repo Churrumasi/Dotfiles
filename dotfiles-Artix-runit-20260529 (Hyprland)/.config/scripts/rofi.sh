@@ -1,0 +1,1 @@
+/home/churrumais/.config/rofi/scripts/launcher_t2
