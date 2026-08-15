@@ -1,9 +1,0 @@
-2026/07/14-19:56:12.526 412c Reusing MANIFEST /home/churrumais/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
-2026/07/14-19:56:12.531 412c Recovering log #216
-2026/07/14-19:56:12.531 412c Reusing old log /home/churrumais/.config/vesktop/sessionData/Local Storage/leveldb/000216.log 
-2026/07/14-19:57:12.537 412c Level-0 table #221: started
-2026/07/14-19:57:12.540 412c Level-0 table #221: 28620 bytes OK
-2026/07/14-19:57:12.542 412c Delete type=0 #216
-2026/07/14-20:01:25.952 414d Level-0 table #223: started
-2026/07/14-20:01:25.955 414d Level-0 table #223: 28074 bytes OK
-2026/07/14-20:01:25.955 414d Delete type=0 #220
